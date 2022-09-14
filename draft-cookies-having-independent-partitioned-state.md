@@ -19,11 +19,11 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Cookies Having Independent Partitioned State specification"
+abbrev: "CHIPS spec"
 category: info
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-cookies-having-independent-partitioned-state
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 date:
