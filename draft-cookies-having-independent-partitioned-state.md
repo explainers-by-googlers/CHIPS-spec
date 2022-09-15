@@ -184,6 +184,13 @@ This document has no IANA actions.
 
 --- back
 
+# References
+
+- [Cookies Having Independent Partitioned State (CHIPS) explainer](https://github.com/privacycg/CHIPS)
+- [Cookies: HTTP State Management Mechanism](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis-10)
+- [Clear Site Data](https://www.w3.org/TR/clear-site-data/)
+- [HTML](https://html.spec.whatwg.org/)
+
 # Acknowledgments
 {:numbered="false"}
 
