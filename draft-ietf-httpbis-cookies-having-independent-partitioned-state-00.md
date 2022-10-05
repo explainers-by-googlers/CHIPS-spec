@@ -10,19 +10,20 @@ date:
 consensus: true
 v: 3
 # area: AREA
-workgroup: PrivacyCG
+workgroup: HTTP
 keyword:
  - cookies
  - partitioned cookies
  - privacy
  - third-party cookies
 venue:
- group: PrivacyCG
- type: Community Group
- mail: public-privacycg@w3.org
+ group: HTTP
+ type: Working Group
+ home: https://httpwg.org/
+ mail: ietf-http-wg@w3.org
  arch: https://example.com/privacycg
   github: "DCtheTall/CHIPS-spec"
-  latest: "https://DCtheTall.github.io/CHIPS-spec/draft-cookies-having-independent-partitioned-state.html"
+  latest: "https://DCtheTall.github.io/CHIPS-spec/draft-ietf-httpbis-cookies-having-independent-partitioned-state.html"
 
 author:
  -
@@ -194,4 +195,7 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+The editors would also like to thank the following individuals for feedback, insight, and implementation of this draft and its predecessors (in alphabetical order):
+Kaustubha Govind,
+Johann Hofmann,
+Jeffrey Yasskin,
