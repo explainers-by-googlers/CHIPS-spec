@@ -3,7 +3,7 @@ title: "Cookies Having Independent Partitioned State specification"
 abbrev: "CHIPS spec"
 category: info
 
-docname: draft-cookies-having-independent-partitioned-state-latest
+docname: draft-cutler-httpbis-cookies-having-independent-partitioned-state-latest
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 date:
