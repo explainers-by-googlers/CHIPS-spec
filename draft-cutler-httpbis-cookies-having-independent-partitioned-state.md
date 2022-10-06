@@ -70,13 +70,11 @@ The Partitioned attribute limits the scope of the cookie such that it will only 
 Below is the algorithm that browsers can use to compute a request's cookie partition key.
 This algorithm could be added after section 5.2 ("Same-site" and "cross-site" Requests) in RFC6265bis:
 
-```
-1. Let top-document be the active document in document's browsing context's top-level browsing context.
+`1. Let top-document be the active document in document's browsing context's top-level browsing context.`
 
-1. Let "document-partition-key" be the site of the top-document when the user agent made the request.
+`2. Let "document-partition-key" be the site of the top-document when the user agent made the request.`
 
-1. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key is the site (as defined in [HTML]) of the top-document of the document associated with the non-HTTP API.
-```
+`3. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key is the site (as defined in [HTML]) of the top-document of the document associated with the non-HTTP API.`
 
 ## Using Set-Cookie with Partitioned
 
@@ -90,23 +88,21 @@ If an attribute-name case-insensitively matches the string "Partitioned" then th
 We could add an attribute to the cookie storage model described in the first paragraph of 5.5 (Storage Model) to include a new attribute on each cookie called the partition-key (to differentiate it from cookie-partition-key defined in a prior section).
 The following could also be added as an additional step to section 5.4:
 
-```
-1.  If the cookie-attribute-list does not contain an attribute with an attribute-name of "Partitioned", set partition-key to null.
 
-    If the cookie-attribute-list does contain an attribute with an attribute-name of "Partitioned" and the secure-only-flag is false, abort these steps and ignore the cookie entirely.
+`1.  If the cookie-attribute-list does not contain an attribute with an attribute-name of "Partitioned", set partition-key to null.`
 
-    Otherwise, set partition-key to document-partition-key defined in section 5.X.X.
-```
+&nbsp;&nbsp;&nbsp;&nbsp;`If the cookie-attribute-list does contain an attribute with an attribute-name of "Partitioned" and the secure-only-flag is false, abort these steps and ignore the cookie entirely.`
+
+&nbsp;&nbsp;&nbsp;&nbsp;`Otherwise, set partition-key to document-partition-key defined in section 5.X.X.`
 
 ## Attaching a Partitioned Cookie to a Request
 
 The following could be added to the first step of the algorithm in section 5.6.3 (Retrieval Algorithm):
 
-```
--   If the cookie's partition-key is null, skip this step.
 
-    Otherwise only include the cookie if the cookie's partition-key is same-site with the retrieval's cookie-partition-key.
-```
+`-   If the cookie's partition-key is null, skip this step.`
+
+&nbsp;&nbsp;&nbsp;&nbsp;`Otherwise only include the cookie if the cookie's partition-key is same-site with the retrieval's cookie-partition-key.`
 
 # Security Considerations
 
@@ -172,11 +168,12 @@ Due to this difference, user agents MAY exclude cross-site partitioned cookies f
 We also can propose changes to the Clear-Site-Data header specification to prevent abuse of that header and partitioned cookies for cross-site tracking.
 The following could be added after step 2 in section 4.2.1 of the Clear-Site-Data spec:
 
-```
-1.  For each cookie in cookie-list, do the following:
-    1.  If the cookie's cookie-partition-key attribute is null, skip this step.
-    1.  Otherwise, if the top-document is not same-site with the cookie's cookie-partition-key then remove the cookie from cookie-list.
-```
+
+`1.  For each cookie in cookie-list, do the following:`
+
+&nbsp;&nbsp;&nbsp;&nbsp;`a.  If the cookie's cookie-partition-key attribute is null, skip this step.`
+
+&nbsp;&nbsp;&nbsp;&nbsp;`b. Otherwise, if the top-document is not same-site with the cookie's cookie-partition-key then remove the cookie from cookie-list.`
 
 
 # IANA Considerations
