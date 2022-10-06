@@ -2,10 +2,10 @@
 
 This is the working area for the individual Internet-Draft, "Cookies Having Independent Partitioned State specification".
 
-* [Editor's Copy](https://DCtheTall.github.io/CHIPS-spec/#go.draft-cookies-having-independent-partitioned-state.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-cookies-having-independent-partitioned-state)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cookies-having-independent-partitioned-state)
-* [Compare Editor's Copy to Individual Draft](https://DCtheTall.github.io/CHIPS-spec/#go.draft-cookies-having-independent-partitioned-state.diff)
+* [Editor's Copy](https://DCtheTall.github.io/CHIPS-spec/#go.draft-cutler-httpbis-cookies-having-independent-partitioned-state-00.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-cutler-httpbis-cookies-having-independent-partitioned-state-00)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cutler-httpbis-cookies-having-independent-partitioned-state-00)
+* [Compare Editor's Copy to Individual Draft](https://DCtheTall.github.io/CHIPS-spec/#go.draft-cutler-httpbis-cookies-having-independent-partitioned-state-00.diff)
 
 
 ## Contributing
