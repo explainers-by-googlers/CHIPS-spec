@@ -33,9 +33,23 @@ author:
     email: "dylancutler@google.com"
 
 normative:
+  Clear-Site-Data:
+    target: https://www.w3.org/TR/clear-site-data/
+    title: Clear Site Data
+    date: false
+  HTML:
+    target: https://html.spec.whatwg.org/
+    title: HTML
+    author:
+      org: WHATWG
+    date: false
+  RFC6265bis: I-D.ietf-httpbis-rfc6265bis
 
 informative:
-
+  CHIPS-Explainer:
+    target: https://github.com/privacycg/CHIPS
+    title: Cookies Having Independent Partitioned State (CHIPS) explainer
+    date: false
 
 --- abstract
 
@@ -47,7 +61,7 @@ These cookies are referred to as "partitioned cookies" and allow embedded sites 
 # Introduction
 
 In order to increase privacy on the web, browser vendors are either planning or already shipping restrictions on cross-site tracking. This includes phasing out support for third-party cookies, as defined in
-[section 7.1 of RFC6265bis](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis-10#section-7.1).
+{{Section 7.1 of RFC6265bis}}.
 
 Although third-party cookies can enable third-party sites to track user behavior across different top-level sites, there are some cookie use cases on the web today where cross-domain subresources require some notion of session or persistent state that is scoped to a user's activity on a single top-level site.
 
@@ -59,7 +73,7 @@ This attribute will allow embedded sites to use HTTP state without giving them t
 
 ## The Partitioned attribute
 
-Below is the definition of the Partitioned attribute. This could be added as a new subsection of 4.1.2 (Semantics (Non-Normative)) in RFC6265bis:
+Below is the definition of the Partitioned attribute. This could be added as a new subsection of {{Section 4.1.2 (Semantics (Non-Normative)) of RFC6265bis}}:
 
 {:quote}
 > The Partitioned attribute limits the scope of the cookie such that it will only be sent when the site of the top-document (defined in section 5.2) is same-site with the top-document when the > cookie was created. Cookies set with this attribute are referred to as "partitioned cookies".
@@ -67,17 +81,17 @@ Below is the definition of the Partitioned attribute. This could be added as a n
 ## Computing the cookie partition key
 
 Below is the algorithm that browsers can use to compute a request's cookie partition key.
-This algorithm could be added after section 5.2 ("Same-site" and "cross-site" Requests) in RFC6265bis:
+This algorithm could be added after {{Section 5.2 ("Same-site" and "cross-site" Requests) of RFC6265bis}}:
 
 {:quote}
 > 1. Let top-document be the active document in document's browsing context's top-level browsing context.
 > 2. Let "cookie-partition-key" be the site of the top-document when the user agent made the request.
-> 3. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key is the site (as defined in [HTML]) of the top-document of the document associated with the non-HTTP API.
+> 3. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key is the site (as defined in {{HTML}}) of the top-document of the document associated with the non-HTTP API.
 
 ## Using Set-Cookie with Partitioned
 
 Below is the algorithm that browsers can use to parse cookie lines with this attribute.
-This algorithm could be added as a new subsection of section 5.4 (The Set-Cookie Header Field) of RFC6265bis:
+This algorithm could be added as a new subsection of {{Section 5.4 (The Set-Cookie Header Field) of RFC6265bis}}:
 
 {:quote}
 > If an attribute-name case-insensitively matches the string "Partitioned" then the user-agent MUST append an attribute to the cookie-attribute-list with an attribute-name of "Partitioned" and an empty attribute value.
@@ -158,7 +172,7 @@ We may also want to add a paragraph about partitioned cookies to section 7.1 (Th
 ## Partitioned Cookies and Clear-Site-Data
 
 We also can propose changes to the Clear-Site-Data header specification to prevent abuse of that header and partitioned cookies for cross-site tracking.
-The following could be added after step 2 in section 4.2.1 of the Clear-Site-Data spec:
+The following could be added after step 2 in section 4.2.1 of {{Clear-Site-Data}}:
 
 {:quote}
 > 1.  For each cookie in cookie-list, do the following:<br><br>
@@ -172,13 +186,6 @@ This document has no IANA actions.
 
 
 --- back
-
-# References
-
-- [Cookies Having Independent Partitioned State (CHIPS) explainer](https://github.com/privacycg/CHIPS)
-- [Cookies: HTTP State Management Mechanism](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis-10)
-- [Clear Site Data](https://www.w3.org/TR/clear-site-data/)
-- [HTML](https://html.spec.whatwg.org/)
 
 # Acknowledgments
 {:numbered="false"}
