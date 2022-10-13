@@ -2,6 +2,8 @@
 
 This is the working area for the individual Internet-Draft, "Cookies Having Independent Partitioned State specification".
 
+**The original proposal and discussions are in [privacycg/CHIPS](https://github.com/privacycg/CHIPS).**
+
 * [Editor's Copy](https://DCtheTall.github.io/CHIPS-spec/#go.draft-cutler-httpbis-partitioned-cookies-00.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-cutler-httpbis-partitioned-cookies-00)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-cutler-httpbis-partitioned-cookies-00)
