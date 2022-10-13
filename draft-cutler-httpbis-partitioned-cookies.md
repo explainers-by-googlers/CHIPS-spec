@@ -3,7 +3,7 @@ title: "Cookies Having Independent Partitioned State specification"
 abbrev: "CHIPS spec"
 category: info
 
-docname: draft-cutler-httpbis-cookies-having-independent-partitioned-state-latest
+docname: draft-cutler-httpbis-partitioned-cookies-latest
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 updates: 6265
@@ -24,7 +24,7 @@ venue:
  mail: ietf-http-wg@w3.org
  arch: https://lists.w3.org/Archives/Public/ietf-http-wg/
  github: "DCtheTall/CHIPS-spec"
- latest: "https://DCtheTall.github.io/CHIPS-spec/draft-cutler-httpbis-cookies-having-independent-partitioned-state.html"
+ latest: "https://DCtheTall.github.io/CHIPS-spec/draft-cutler-httpbis-partitioned-cookies.html"
 
 author:
  -
