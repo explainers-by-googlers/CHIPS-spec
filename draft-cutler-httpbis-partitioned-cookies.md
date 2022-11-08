@@ -104,6 +104,18 @@ The following could also be added as an additional step to section 5.4:
       If the cookie-attribute-list does contain an attribute with an attribute-name of "Partitioned" and the secure-only-flag is false, abort these steps and ignore the cookie entirely.<br><br>
       Otherwise, set partition-key to cookie-partition-key defined in section 5.X.X.
 
+## Partitioned Cookies with the Same Name/Domain/Path
+
+In order to prevent cross-partition leaks, we need to allow sites to set cookies with the same name, domain, and path as a cookie with another partition key.
+In order to achieve this, we suggest the following edit to step 22 of 5.5 (Storage Model), note that steps b-d below are the same as the current spec.
+
+{:quote}
+> 1.  If the cookie store contains a cookie with the same name, domain, host-only-flag, path, and partition-key as the newly-created cookie:<br><br>
+      a.  Let old-cookie be the existing cookie with the same name, domain, host-only-flag, path, and partition-key as the newly-created cookie. (Notice that this algorithm maintains the invariant that there is at most one such cookie.)<br><br>
+      b.  If the newly-created cookie was received from a "non-HTTP" API and the old-cookie's http-only-flag is true, abort these steps and ignore the newly created cookie entirely.<br><br>
+      c.  Update the creation-time of the newly-created cookie to match the creation-time of the old-cookie.<br><br>
+      d.  Remove the old-cookie from the cookie store.
+
 ## Attaching a Partitioned Cookie to a Request
 
 The following could be added to the first step of the algorithm in section 5.6.3 (Retrieval Algorithm):
