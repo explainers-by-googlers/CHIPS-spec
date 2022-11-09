@@ -104,6 +104,18 @@ The following could also be added as an additional step to section 5.4:
       If the cookie-attribute-list does contain an attribute with an attribute-name of "Partitioned" and the secure-only-flag is false, abort these steps and ignore the cookie entirely.<br><br>
       Otherwise, set partition-key to cookie-partition-key defined in section 5.X.X.
 
+## Partitioned Cookies with the Same Name/Domain/Path
+
+In order to prevent cross-partition leaks, we need to allow sites to set cookies with the same name, domain, and path as long as they have different partition keys.
+In order to achieve this, we suggest the following edit to step 22 of {{Section 5.5 (Storage Model) of RFC6265bis}}, note that steps b-d below are not changed.
+
+{:quote}
+> 1.  If the cookie store contains a cookie with the same name, domain, host-only-flag, path, and partition-key as the newly-created cookie:<br><br>
+      a.  Let old-cookie be the existing cookie with the same name, domain, host-only-flag, path, and partition-key as the newly-created cookie. (Notice that this algorithm maintains the invariant that there is at most one such cookie.)<br><br>
+      b.  If the newly-created cookie was received from a "non-HTTP" API and the old-cookie's http-only-flag is true, abort these steps and ignore the newly created cookie entirely.<br><br>
+      c.  Update the creation-time of the newly-created cookie to match the creation-time of the old-cookie.<br><br>
+      d.  Remove the old-cookie from the cookie store.
+
 ## Attaching a Partitioned Cookie to a Request
 
 The following could be added to the first step of the algorithm in section 5.6.3 (Retrieval Algorithm):
@@ -149,6 +161,9 @@ This will prevent abuse of partitioned cookies and the Clear-Site-Data header to
 Another privacy consideration is that the privacy guarantees of partitioned cookies can be circumvented by browser extensions with host permissions. Extensions' background contexts can query and store cookies across partitions, meaning they could store a cross-site identifier across partitions.
 Unfortunately, this type of attack is unavoidable due to the nature of extensions.
 Even if we block partitioned cookies (or even all cookies) from extensions' background contexts, an extension could still use content scripts to write cross-site identifiers to the DOM which the site's own script could copy to the site's partitioned cookie jar.
+
+Finally, sites should be able to set partitioned cookies with the same name, domain, and path in different partitions.
+Otherwise, the presence or absence of a cookie with a particular name/domain/path would allow sites to learn about that user's activity on different top-level sites that make subresource requests to the cookie's domain.
 
 # Implementation Considerations
 
