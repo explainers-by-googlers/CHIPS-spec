@@ -162,6 +162,9 @@ Another privacy consideration is that the privacy guarantees of partitioned cook
 Unfortunately, this type of attack is unavoidable due to the nature of extensions.
 Even if we block partitioned cookies (or even all cookies) from extensions' background contexts, an extension could still use content scripts to write cross-site identifiers to the DOM which the site's own script could copy to the site's partitioned cookie jar.
 
+Finally, sites should be able to set partitioned cookies with the same name, domain, and path in different partitions.
+Otherwise, the presence or absence of a cookie with a particular name/domain/path would allow sites to learn about that user's activity on different top-level sites that make subresource requests to the cookie's domain.
+
 # Implementation Considerations
 
 ## Applying Limits to Partitioned Cookie Jars
