@@ -107,7 +107,7 @@ The following could also be added as an additional step to section 5.4:
 ## Partitioned Cookies with the Same Name/Domain/Path
 
 In order to prevent cross-partition leaks, we need to allow sites to set cookies with the same name, domain, and path as a cookie with another partition key.
-In order to achieve this, we suggest the following edit to step 22 of 5.5 (Storage Model), note that steps b-d below are the same as the current spec.
+In order to achieve this, we suggest the following edit to step 22 of {{Section 5.5 (Storage Model) of RFC6265bis}}, note that steps b-d below are not changed.
 
 {:quote}
 > 1.  If the cookie store contains a cookie with the same name, domain, host-only-flag, path, and partition-key as the newly-created cookie:<br><br>
