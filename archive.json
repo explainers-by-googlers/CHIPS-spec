@@ -1,0 +1,567 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2023-01-05T00:08:10.386594+00:00",
+  "repo": "DCtheTall/CHIPS-spec",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 8,
+      "id": "I_kwDOH_4ODs5UOmM9",
+      "title": "Should probably say \"kibibytes\" instead of \"kilobytes\"",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/issues/8",
+      "state": "OPEN",
+      "author": "johannhof",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See https://github.com/privacycg/CHIPS/pull/59#discussion_r998109514 and, if you're like me, https://www.logicmonitor.com/blog/what-the-hell-is-a-kibibyte\r\n\r\ncc @annevk @DCtheTall ",
+      "createdAt": "2022-10-18T12:13:24Z",
+      "updatedAt": "2022-10-18T12:13:24Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOH_4ODs5akhVI",
+      "title": "Computing cookie partition key in service workers",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/issues/10",
+      "state": "OPEN",
+      "author": "DCtheTall",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "At the time of writing this, workers always use their own origin as their site for cookies, regardless of the context they are registered in. This will change when browsers ship [storage partitioning](https://github.com/privacycg/storage-partitioning), and service workers will derive their site for cookies from their storage key instead of the worker origin. This is a nice improvement to service workers since it prevents workers registered in 3P contexts from becoming SameSite leaks.\r\n\r\nGiven this effort, I think that it makes sense to specify somehow that partitioned cookies should use the service worker's storage key, not the worker origin, to compute the cookie partition key.",
+      "createdAt": "2023-01-04T20:18:01Z",
+      "updatedAt": "2023-01-04T20:18:15Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOH_4ODs4_DCwK",
+      "title": "Add CHIPS spec draft to repo",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/pull/1",
+      "state": "MERGED",
+      "author": "DCtheTall",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-09-15T18:48:31Z",
+      "updatedAt": "2022-10-05T20:29:48Z",
+      "baseRepository": "DCtheTall/CHIPS-spec",
+      "baseRefName": "main",
+      "baseRefOid": "3004107b7866288ba4de13ab64fa7f77c99cd325",
+      "headRepository": "DCtheTall/CHIPS-spec",
+      "headRefName": "draft",
+      "headRefOid": "3ed38d59e052219bb8b349b654f26ffd412340c6",
+      "closedAt": "2022-10-05T20:29:47Z",
+      "mergedAt": "2022-10-05T20:29:47Z",
+      "mergedBy": "DCtheTall",
+      "mergeCommit": {
+        "oid": "a25b7bffbeb6e58443e848a6db928afae2fafcd1"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOH_4ODs5CwnTy",
+          "commit": {
+            "abbreviatedOid": "ce132f0"
+          },
+          "author": "johannhof",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-26T11:26:22Z",
+          "updatedAt": "2022-09-26T11:26:22Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Hmm isn't that HTTP WG at this point? \ud83e\udd14 ",
+              "createdAt": "2022-09-26T11:26:22Z",
+              "updatedAt": "2022-09-26T11:26:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH_4ODs5CzGEG",
+          "commit": {
+            "abbreviatedOid": "ce132f0"
+          },
+          "author": "johannhof",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-26T18:05:20Z",
+          "updatedAt": "2022-09-26T18:05:21Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Talked about this with @jyasskin and as we're not 100% sure what the correct entry for this field would be at the moment, you may just be able to omit it?\r\n\r\nHowever, the draft name should probably include \"httpbis\" even though we're incubating in Privacy CG to make it clear what the intended standardization venue is, see https://authors.ietf.org/naming-your-internet-draft#group (also because it seems a little complicated to change draft names retroactively).",
+              "createdAt": "2022-09-26T18:05:21Z",
+              "updatedAt": "2022-09-26T18:05:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH_4ODs5DeRqA",
+          "commit": {
+            "abbreviatedOid": "ce132f0"
+          },
+          "author": "DCtheTall",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-10-05T20:29:21Z",
+          "updatedAt": "2022-10-05T20:29:21Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Done.",
+              "createdAt": "2022-10-05T20:29:21Z",
+              "updatedAt": "2022-10-05T20:29:21Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOH_4ODs5AP875",
+      "title": "This might fix the broken GH action",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/pull/2",
+      "state": "MERGED",
+      "author": "jyasskin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See https://github.com/DCtheTall/CHIPS-spec/actions/runs/3192505413/jobs/5210058263",
+      "createdAt": "2022-10-05T22:29:14Z",
+      "updatedAt": "2022-10-06T17:52:40Z",
+      "baseRepository": "DCtheTall/CHIPS-spec",
+      "baseRefName": "main",
+      "baseRefOid": "a25b7bffbeb6e58443e848a6db928afae2fafcd1",
+      "headRepository": "jyasskin/CHIPS-spec",
+      "headRefName": "spec-filename",
+      "headRefOid": "94461817617bce770ef4f82be442434aeea8f626",
+      "closedAt": "2022-10-06T17:15:09Z",
+      "mergedAt": "2022-10-06T17:15:09Z",
+      "mergedBy": "DCtheTall",
+      "mergeCommit": {
+        "oid": "087180bb77cc219fe26b0a129248d51fba6dd6a0"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOH_4ODs5AVqM4",
+      "title": "Fix the I-D build.",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/pull/3",
+      "state": "MERGED",
+      "author": "jyasskin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-06T18:07:51Z",
+      "updatedAt": "2022-10-06T23:44:51Z",
+      "baseRepository": "DCtheTall/CHIPS-spec",
+      "baseRefName": "main",
+      "baseRefOid": "50a5dbafdf8fc65aee282c9ca53af9f141841508",
+      "headRepository": "jyasskin/CHIPS-spec",
+      "headRefName": "fix-build",
+      "headRefOid": "310acd66c992509b40a7f1ea8737dbac84627e5d",
+      "closedAt": "2022-10-06T18:10:37Z",
+      "mergedAt": "2022-10-06T18:10:37Z",
+      "mergedBy": "DCtheTall",
+      "mergeCommit": {
+        "oid": "7fe703347cc6ea23d3330cbdf9a457ed7212a518"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOH_4ODs5AVtZa",
+      "title": "Fix up some metadata.",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/pull/4",
+      "state": "MERGED",
+      "author": "jyasskin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-06T18:20:58Z",
+      "updatedAt": "2022-10-06T23:45:14Z",
+      "baseRepository": "DCtheTall/CHIPS-spec",
+      "baseRefName": "main",
+      "baseRefOid": "7fe703347cc6ea23d3330cbdf9a457ed7212a518",
+      "headRepository": "jyasskin/CHIPS-spec",
+      "headRefName": "fix-metadata",
+      "headRefOid": "d5e1266c4e91e32e5299618ff5964b373cb40d2e",
+      "closedAt": "2022-10-06T18:27:10Z",
+      "mergedAt": "2022-10-06T18:27:10Z",
+      "mergedBy": "DCtheTall",
+      "mergeCommit": {
+        "oid": "1c7434e1cde1824c1d96f1e27252c53cb3bedc17"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOH_4ODs5AV5OM",
+      "title": "Use the normal references sections and links.",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/pull/5",
+      "state": "MERGED",
+      "author": "jyasskin",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See the rendering at https://jyasskin.github.io/CHIPS-spec/fix-references/draft-cutler-httpbis-cookies-having-independent-partitioned-state.html#name-introduction.",
+      "createdAt": "2022-10-06T19:06:07Z",
+      "updatedAt": "2022-10-07T02:17:05Z",
+      "baseRepository": "DCtheTall/CHIPS-spec",
+      "baseRefName": "main",
+      "baseRefOid": "0fdf8f1bc28887c1a68d46a8c3df585bd56ab461",
+      "headRepository": "jyasskin/CHIPS-spec",
+      "headRefName": "fix-references",
+      "headRefOid": "2dfa0a9b7ccaf8a81daadef6f95b64d18f14fcd0",
+      "closedAt": "2022-10-07T02:07:09Z",
+      "mergedAt": "2022-10-07T02:07:09Z",
+      "mergedBy": "DCtheTall",
+      "mergeCommit": {
+        "oid": "f05473ee9b1e99d7a6490b54394227da705bf3d4"
+      },
+      "comments": [
+        {
+          "author": "DCtheTall",
+          "authorAssociation": "OWNER",
+          "body": "Thanks for the help, Jeffrey!",
+          "createdAt": "2022-10-07T02:07:05Z",
+          "updatedAt": "2022-10-07T02:07:05Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOH_4ODs5Ag8wz",
+      "title": "Use memory for per-partition-per-domain limit",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/pull/6",
+      "state": "MERGED",
+      "author": "DCtheTall",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-10T18:31:58Z",
+      "updatedAt": "2022-10-13T17:08:58Z",
+      "baseRepository": "DCtheTall/CHIPS-spec",
+      "baseRefName": "main",
+      "baseRefOid": "8ce0ecad62021f91d58069038a03c3191cf93913",
+      "headRepository": "DCtheTall/CHIPS-spec",
+      "headRefName": "mem-limit",
+      "headRefOid": "b6e19c33c1e36c07f4ede28fdc21e70bbc750546",
+      "closedAt": "2022-10-13T17:08:57Z",
+      "mergedAt": "2022-10-13T17:08:57Z",
+      "mergedBy": "DCtheTall",
+      "mergeCommit": {
+        "oid": "631abf6628eb445402ddfdc6228200e6d141335e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOH_4ODs5DvPCI",
+          "commit": {
+            "abbreviatedOid": "61c539d"
+          },
+          "author": "jyasskin",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-10-10T19:35:02Z",
+          "updatedAt": "2022-10-10T19:35:37Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "In an example, which is inherently non-normative, I'd use \"might\" instead of \"MAY\". The MAY in the line before this, about limiting by bytes instead of number, might still need to be normative, depending on what the rest of the spec says about how UAs can limit the amount of cookies: if the rest of the spec says they can only limit by the number of cookies, this needs the normative MAY to let them do it differently in this case.",
+              "createdAt": "2022-10-10T19:35:03Z",
+              "updatedAt": "2022-10-10T19:35:37Z"
+            },
+            {
+              "originalPosition": 3,
+              "body": "Be consistent about SHOULD vs should. I think RFCs generally prefer all-caps even though web specs prefer lower case.",
+              "createdAt": "2022-10-10T19:35:33Z",
+              "updatedAt": "2022-10-10T19:35:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH_4ODs5D5scu",
+          "commit": {
+            "abbreviatedOid": "61c539d"
+          },
+          "author": "johannhof",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Two minor thoughts/questions :)",
+          "createdAt": "2022-10-12T14:24:31Z",
+          "updatedAt": "2022-10-12T14:26:13Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "`to only occupy 10 kilobytes per top-level partition` or something like that to be overly precise? :)",
+              "createdAt": "2022-10-12T14:24:31Z",
+              "updatedAt": "2022-10-12T14:26:13Z"
+            },
+            {
+              "originalPosition": 5,
+              "body": "Hmm why \"instead\", isn't it \"in addition\"?",
+              "createdAt": "2022-10-12T14:25:49Z",
+              "updatedAt": "2022-10-12T14:26:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH_4ODs5EBR9X",
+          "commit": {
+            "abbreviatedOid": "61c539d"
+          },
+          "author": "DCtheTall",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-10-13T17:03:18Z",
+          "updatedAt": "2022-10-13T17:03:18Z",
+          "comments": [
+            {
+              "originalPosition": 3,
+              "body": "Done.",
+              "createdAt": "2022-10-13T17:03:18Z",
+              "updatedAt": "2022-10-13T17:03:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH_4ODs5EBSA9",
+          "commit": {
+            "abbreviatedOid": "61c539d"
+          },
+          "author": "DCtheTall",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-10-13T17:03:30Z",
+          "updatedAt": "2022-10-13T17:03:30Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Done.",
+              "createdAt": "2022-10-13T17:03:30Z",
+              "updatedAt": "2022-10-13T17:03:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH_4ODs5EBSIn",
+          "commit": {
+            "abbreviatedOid": "61c539d"
+          },
+          "author": "DCtheTall",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-10-13T17:03:52Z",
+          "updatedAt": "2022-10-13T17:03:53Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Done.",
+              "createdAt": "2022-10-13T17:03:52Z",
+              "updatedAt": "2022-10-13T17:03:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH_4ODs5EBS51",
+          "commit": {
+            "abbreviatedOid": "61c539d"
+          },
+          "author": "DCtheTall",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-10-13T17:05:53Z",
+          "updatedAt": "2022-10-13T17:05:54Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "We actually have decided to evict the least-recently accessed cookie in Chrome to keep it consistent with the eviction scheme for the number of cookies. We also have decided to add an additional 180 cookie per-domain-per-partition limit in addition to the 10 KB limit.\r\n\r\nFor now, I'll just remove this line.",
+              "createdAt": "2022-10-13T17:05:53Z",
+              "updatedAt": "2022-10-13T17:05:54Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOH_4ODs5AwVHp",
+      "title": "Add link back to proposal repo",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/pull/7",
+      "state": "MERGED",
+      "author": "johannhof",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-13T17:15:06Z",
+      "updatedAt": "2022-10-14T16:49:41Z",
+      "baseRepository": "DCtheTall/CHIPS-spec",
+      "baseRefName": "main",
+      "baseRefOid": "631abf6628eb445402ddfdc6228200e6d141335e",
+      "headRepository": "johannhof/CHIPS-spec",
+      "headRefName": "patch-1",
+      "headRefOid": "bc0977b62b5860aa69db423f17651a8a43395cb4",
+      "closedAt": "2022-10-14T15:07:50Z",
+      "mergedAt": "2022-10-14T15:07:50Z",
+      "mergedBy": "DCtheTall",
+      "mergeCommit": {
+        "oid": "47f212081a1aa6b37cc9949d70919a6022e27a53"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOH_4ODs5CdMDW",
+      "title": "Add instructions for partitioned cookies with the same name/domain/path",
+      "url": "https://github.com/DCtheTall/CHIPS-spec/pull/9",
+      "state": "MERGED",
+      "author": "DCtheTall",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "\u2026domain/path",
+      "createdAt": "2022-11-08T19:45:28Z",
+      "updatedAt": "2022-11-09T19:01:39Z",
+      "baseRepository": "DCtheTall/CHIPS-spec",
+      "baseRefName": "main",
+      "baseRefOid": "47f212081a1aa6b37cc9949d70919a6022e27a53",
+      "headRepository": "DCtheTall/CHIPS-spec",
+      "headRefName": "same-name",
+      "headRefOid": "46485e9948f41b711fd31959a00412f692647f40",
+      "closedAt": "2022-11-09T19:01:38Z",
+      "mergedAt": "2022-11-09T19:01:38Z",
+      "mergedBy": "DCtheTall",
+      "mergeCommit": {
+        "oid": "712281f1112250271069512eeb5efa5997391180"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOH_4ODs5F6XOE",
+          "commit": {
+            "abbreviatedOid": "f02f414"
+          },
+          "author": "johannhof",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Thanks Dylan! A few suggestions but looks good to me overall.",
+          "createdAt": "2022-11-08T22:21:43Z",
+          "updatedAt": "2022-11-08T22:33:25Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Could we add the (brief) full rationale for this to the `Avoiding cross-partition leaks` section in Security Considerations?",
+              "createdAt": "2022-11-08T22:21:43Z",
+              "updatedAt": "2022-11-08T22:33:25Z"
+            },
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nIn order to achieve this, we suggest the following edit to step 22 of {{Section 5.5 (Storage Model) of RFC6265bis}}, note that steps b-d below are not changed.\r\n```",
+              "createdAt": "2022-11-08T22:24:52Z",
+              "updatedAt": "2022-11-08T22:33:26Z"
+            },
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\r\nIn order to prevent cross-partition leaks, we need to allow sites to set cookies with the same name, domain, and path as long as they have different partition keys.\r\n```",
+              "createdAt": "2022-11-08T22:32:18Z",
+              "updatedAt": "2022-11-08T22:33:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH_4ODs5GAsrF",
+          "commit": {
+            "abbreviatedOid": "f02f414"
+          },
+          "author": "DCtheTall",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-11-09T18:53:50Z",
+          "updatedAt": "2022-11-09T18:53:50Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Done.",
+              "createdAt": "2022-11-09T18:53:50Z",
+              "updatedAt": "2022-11-09T18:53:50Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
