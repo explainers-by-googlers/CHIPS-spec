@@ -53,7 +53,7 @@ informative:
 
 --- abstract
 
-This document updates RFC6265bis, defining a new attribute, Partitioned, which restricts the contexts in which a cookie is available to only those whose top-level document is same-site with the top-level document that initiated the request that created the cookie.
+This document updates RFC6265bis, defining a new attribute, Partitioned, which restricts the contexts in which a cookie is available to only those whose top-level document is same-site and has no cross-site ancestor with the top-level document that initiated the request that created the cookie.
 These cookies are referred to as "partitioned cookies" and allow embedded sites which are cross-site with the top-level frame to have access to HTTP state which cannot be used for tracking across multiple top-level sites.
 
 --- middle
@@ -65,7 +65,7 @@ In order to increase privacy on the web, browser vendors are either planning or 
 
 Although third-party cookies can enable third-party sites to track user behavior across different top-level sites, there are some cookie use cases on the web today where cross-domain subresources require some notion of session or persistent state that is scoped to a user's activity on a single top-level site.
 
-In order to meet these use cases, this document proposes changes to RFC6265bis to support a new cookie attribute, Partitioned, which restricts the contexts that a cookie is available to only those whose top-level document is same-site with the top-level document that the cookie was created in.
+In order to meet these use cases, this document proposes changes to RFC6265bis to support a new cookie attribute, Partitioned, which restricts the contexts that a cookie is available to only those whose top-level document is same-site and have no cross-site ancestor, with the top-level document that the cookie was created in.
 This attribute will allow embedded sites to use HTTP state without giving them the capability to link user behavior across distinct top-level sites.
 
 
@@ -85,8 +85,8 @@ This algorithm could be added after {{Section 5.2 ("Same-site" and "cross-site" 
 
 {:quote}
 > 1. Let top-document be the active document in document's browsing context's top-level browsing context.
-> 2. Let "cookie-partition-key" be the site of the top-document when the user agent made the request.
-> 3. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key is the site (as defined in {{HTML}}) of the top-document of the document associated with the non-HTTP API.
+> 2. Let "cookie-partition-key" be the site of the top-document when the user agent made the request and a bit indicating if the active document has a cross-site ancestor.
+> 3. If the cookie is being read or written via a "non-HTTP" API, then the site used for the key is the site (as defined in {{HTML}}) of the top-document of the document associated with the non-HTTP API.
 
 ## Using Set-Cookie with Partitioned
 
@@ -133,7 +133,7 @@ This proposal takes the opportunity of defining the semantics of a new cookie at
 ## Partitioned cookies and XSS attacks
 
 Sites are more susceptible to XSS attacks as embedded frames since these contexts rely on cross-site cookies for a notion of user session/state.
-Partitioning cross-site cookies makes them less vulnerable to being leaked via XSS, since an attacker would need to navigate the user's browser to the top-level site the cookie was created on in order for the browser to send the cookie at all.
+Partitioning cross-site cookies makes them less vulnerable to being leaked via XSS, since an attacker would need to navigate the user's browser to the top-level site the cookie was created on in order for the browser to send the cookie at all. The inclusion of a cross-site ancestor chain bit in the cookie partition key also prevents embedded frames with cross site ancestors from accessing cookies of the top-level site. 
 
 ## Partitioned cookies and CSRF attacks
 
@@ -193,7 +193,7 @@ The following could be added after step 2 in section 4.2.1 of {{Clear-Site-Data}
 {:quote}
 > 1.  For each cookie in cookie-list, do the following:<br><br>
       a.  If the cookie's cookie-partition-key attribute is null, skip this step.<br><br>
-      b.  Otherwise, if the top-document is not same-site with the cookie's partition-key then remove the cookie from cookie-list.
+      b.  Otherwise, if the top-document is not same-site with the cookie's partition-key top-level site then remove the cookie from cookie-list. 
 
 
 # IANA Considerations
