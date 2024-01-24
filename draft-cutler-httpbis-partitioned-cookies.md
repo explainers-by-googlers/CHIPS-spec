@@ -67,7 +67,7 @@ Although third-party cookies can enable third-party sites to track user behavior
 
 In order to meet these use cases, this document proposes changes to RFC6265bis to support a new cookie attribute, Partitioned, which restricts the contexts that a cookie is available to only those whose top-level document is same-site with the top-level document that the cookie was created in.
 
-When top-level site is the one setting the cookie, a calculation will be made to determine if the frame the cookie is being set on has any cross-site ancestors. If a cross-site ancestor is present, then that will be indicated in the key of the Partitioned attribute.
+In addition to double-keying cookies on top-level site, we propose to additionally key cookies on a bit indicating whether the frame tree includes a cross-site ancestor to prevent attacks between framed documents.
 
 This attribute will allow embedded sites to use HTTP state without giving them the capability to link user behavior across distinct top-level sites.
 
@@ -105,7 +105,7 @@ The following could also be added as an additional step to section 5.4:
 {:quote}
 > 1.  If the cookie-attribute-list does not contain an attribute with an attribute-name of "Partitioned", set partition-key to null.<br><br>
       If the cookie-attribute-list does contain an attribute with an attribute-name of "Partitioned" and the secure-only-flag is false, abort these steps and ignore the cookie entirely.<br><br>
-      If the cookie being set matches the top-level site, check if there is a cross-site ancestor present and use that value to, set partition-key to cookie-partition-key defined in section 5.X.X.
+      Otherwise, set partition-key to cookie-partition-key defined in section 5.X.X.
 
 ## Partitioned Cookies with the Same Name/Domain/Path
 
@@ -197,7 +197,7 @@ The following could be added after step 2 in section 4.2.1 of {{Clear-Site-Data}
 {:quote}
 > 1.  For each cookie in cookie-list, do the following:<br><br>
       a.  If the cookie's cookie-partition-key attribute is null, skip this step.<br><br>
-      b. Otherwise, if the corresponding request's cookie-partition-key (as defined in section 5.X.X) does not match the cookie's partition-key, then remove the cookie from cookie-list. 
+      b. Otherwise, if the corresponding request's cookie-partition-key (as defined in section 5.X.X) does not match the cookie's partition-key, then remove the cookie from cookie-list.
 
 
 # IANA Considerations
