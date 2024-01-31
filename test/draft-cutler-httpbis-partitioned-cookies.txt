@@ -4,9 +4,9 @@
 
 HTTP                                                           D. Cutler
 Internet-Draft                                                Google LLC
-Updates: 6265 (if approved)                             10 November 2022
+Updates: 6265 (if approved)                              31 January 2024
 Intended status: Informational                                          
-Expires: 14 May 2023
+Expires: 3 August 2024
 
 
        Cookies Having Independent Partitioned State specification
@@ -56,11 +56,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 May 2023.
+   This Internet-Draft will expire on 3 August 2024.
 
 Copyright Notice
 
-   Copyright (c) 2022 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -359,9 +359,9 @@ Table of Contents
    [RFC6265bis]
               Bingler, S., West, M., and J. Wilander, "Cookies: HTTP
               State Management Mechanism", Work in Progress, Internet-
-              Draft, draft-ietf-httpbis-rfc6265bis-11, 7 November 2022,
+              Draft, draft-ietf-httpbis-rfc6265bis-13, 15 November 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              rfc6265bis-11>.
+              rfc6265bis-13>.
 
 6.2.  Informative References
 
@@ -375,6 +375,8 @@ Acknowledgments
    feedback, insight, and implementation of this draft and its
    predecessors (in alphabetical order): Kaustubha Govind, Johann
    Hofmann, Jeffrey Yasskin,
+
+   ADDING CODE TO TEST
 
 Author's Address
 
