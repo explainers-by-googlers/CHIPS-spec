@@ -137,7 +137,7 @@ This proposal takes the opportunity of defining the semantics of a new cookie at
 
 Sites are more susceptible to XSS attacks as embedded frames since these contexts rely on cross-site cookies for a notion of user session/state.
 Partitioning cross-site cookies makes them less vulnerable to being leaked via XSS, since an attacker would need to navigate the user's browser to the top-level site the cookie was created on in order for the browser to send the cookie at all.
-The inclusion of a cross-site ancestor bit in the cookie partition key prevents malicious third-party embeds from accessing the first-party partition; this makes partitioned cookies less susceptible to abuse by these embeds for click-jacking, or other types of attacks. 
+The inclusion of a cross-site ancestor bit in the cookie partition key prevents malicious third-party embeds from accessing the first-party partition; this makes partitioned cookies less susceptible to abuse by these embeds for click-jacking, or other types of attacks.
 
 ## Partitioned cookies and CSRF attacks
 
