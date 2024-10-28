@@ -88,8 +88,9 @@ This algorithm could be added after {{Section 5.2 ("Same-site" and "cross-site" 
 
 {:quote}
 > 1. Let top-document be the active document in document's browsing context's top-level browsing context.
-> 2. Let "cookie-partition-key" be a tuple whose first element is the site of the top-document when the user agent made the request and the whose second element is a bit corresponding to a boolean value, indicating if the context the cookie was created in is cross-site as defined in [Section 5.2 of RFC6265bis](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis-13#section-5.2).
-> 3. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key's first element, the site (as defined in {{HTML}}) used for the key, is same-site with the top-document associated with the non-HTTP API.
+> 2. Let "cookie-partition-key" be a tuple whose first element is the site of the top-document when the user agent made the request and whose second element is a boolean (cross-site ancestor) indicating if the cookie was created in a cross-site context as defined in [Section 5.2 of RFC6265bis](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis-13#section-5.2).
+> 3. All cookies set on the top-document have a cross-site ancestor value indicating that they were set in a same-site context.
+> 4. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key's first element, the site (as defined in {{HTML}}), is the top-document associated with the non-HTTP API. If the origin assocaited with the cookie is not first-party to the site contained in the first element, the second element (cross-site ancestor) must have a value that corresponds to a cross-site context.
 
 ## Using Set-Cookie with Partitioned
 
