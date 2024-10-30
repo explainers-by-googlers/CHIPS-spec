@@ -66,6 +66,9 @@ In order to increase privacy on the web, browser vendors are either planning or 
 Although third-party cookies can enable third-party sites to track user behavior across different top-level sites, there are some cookie use cases on the web today where cross-domain subresources require some notion of session or persistent state that is scoped to a user's activity on a single top-level site.
 
 In order to meet these use cases, this document proposes changes to RFC6265bis to support a new cookie attribute, Partitioned, which restricts the contexts that a cookie is available to only those whose top-level document is same-site with the top-level document that the cookie was created in.
+
+In addition to double-keying cookies on top-level site, we propose to additionally key cookies on a bit indicating whether the frame tree includes a cross-site ancestor to prevent attacks between framed documents.
+
 This attribute will allow embedded sites to use HTTP state without giving them the capability to link user behavior across distinct top-level sites.
 
 
@@ -85,8 +88,8 @@ This algorithm could be added after {{Section 5.2 ("Same-site" and "cross-site" 
 
 {:quote}
 > 1. Let top-document be the active document in document's browsing context's top-level browsing context.
-> 2. Let "cookie-partition-key" be the site of the top-document when the user agent made the request.
-> 3. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key is the site (as defined in {{HTML}}) of the top-document of the document associated with the non-HTTP API.
+> 2. Let "cookie-partition-key" be a tuple whose first element is the site of the top-document when the user agent made the request and whose second element is a boolean (cross-site-ancestor) indicating if the cookie was created in a cross-site context as defined in [Section 5.2 of RFC6265bis](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis-13#section-5.2).
+> 3. If the cookie is being read or written via a "non-HTTP" API, then cookie-partition-key's first element, the site (as defined in {{HTML}}), is the top-document associated with the non-HTTP API. The second element (cross-site-ancestor) will contain a value of `true` if the "non-HTTP" API is called from a cross-site context as defined in [Section 5.8.2 of RFC6265bis](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis-15#name-non-http-apis).
 
 ## Using Set-Cookie with Partitioned
 
@@ -134,6 +137,7 @@ This proposal takes the opportunity of defining the semantics of a new cookie at
 
 Sites are more susceptible to XSS attacks as embedded frames since these contexts rely on cross-site cookies for a notion of user session/state.
 Partitioning cross-site cookies makes them less vulnerable to being leaked via XSS, since an attacker would need to navigate the user's browser to the top-level site the cookie was created on in order for the browser to send the cookie at all.
+The inclusion of a cross-site ancestor bit in the cookie partition key prevents malicious third-party embeds from accessing the first-party partition; this makes partitioned cookies less susceptible to abuse by these embeds for click-jacking, or other types of attacks.
 
 ## Partitioned cookies and CSRF attacks
 
@@ -193,7 +197,7 @@ The following could be added after step 2 in section 4.2.1 of {{Clear-Site-Data}
 {:quote}
 > 1.  For each cookie in cookie-list, do the following:<br><br>
       a.  If the cookie's cookie-partition-key attribute is null, skip this step.<br><br>
-      b.  Otherwise, if the top-document is not same-site with the cookie's partition-key then remove the cookie from cookie-list.
+      b. Otherwise, if the corresponding request's cookie-partition-key (as defined in section 5.X.X) does not match the cookie's partition-key, then remove the cookie from cookie-list.
 
 
 # IANA Considerations
